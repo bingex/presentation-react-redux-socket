@@ -9,18 +9,15 @@ import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import createLogger from 'redux-logger';
 
 import socketIO from 'socket.io-client';
 import socketIoMiddleware from 'redux-socket.io-middleware';
 
-const io = socketIO.connect(`http://localhost:8080`);
-
-const logger = createLogger();
+const io = socketIO.connect();
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, socketIoMiddleware(io), logger))
+  composeWithDevTools(applyMiddleware(thunk, socketIoMiddleware(io)))
 );
 
 ReactDOM.render(

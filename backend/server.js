@@ -38,7 +38,7 @@ let presentation = io.on('connection', function(socket) {
         });
 
       case 'SLIDE_CHANGED':
-        socket.emit('action', {
+        presentation.emit('action', {
           type: 'SLIDE_CHANGED_FROM_SERVER',
           meta: { remote: true },
           data: action.data

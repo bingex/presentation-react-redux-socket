@@ -18,7 +18,7 @@ export function setSecret(secret) {
   return {
     type: SET_SECRET,
     secret
-  }
+  };
 }
 
 export function slideChange(slideId, secret) {
@@ -29,8 +29,7 @@ export function slideChange(slideId, secret) {
       slide: slideId,
       secret: secret
     }
-  }
-
+  };
 }
 
 export function login(secret) {

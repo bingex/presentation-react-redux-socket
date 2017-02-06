@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import { login, setSecret } from '../actions';
 
 class LoginComponent extends React.Component {
-  state = {
-    secret: ''
-  };
-
   handleChange = e => {
-    this.setState({ [e.target.name]: [e.target.value] });
     this.props.setSecret(e.target.value);
   };
 
@@ -26,12 +21,7 @@ class LoginComponent extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <h1>Input presentation secret key</h1>
 
-        <input
-          name="secret"
-          type="text"
-          value={this.props.secret}
-          onChange={this.handleChange}
-        />
+        <input name="secret" type="text" value={this.props.secret} onChange={this.handleChange} />
       </form>
     );
 

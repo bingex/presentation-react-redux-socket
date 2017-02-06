@@ -2,9 +2,8 @@ import { FETCH_SLIDES, SLIDE_CHANGED_FROM_SERVER } from '../actions';
 
 const initial = {
   slides: [],
-  needToRedirect: false,
-  ignoreSlideChange: false
-}
+  activeSlide: 1
+};
 
 export default function slidesReducer(state = initial, action = {}) {
   switch (action.type) {
@@ -12,8 +11,9 @@ export default function slidesReducer(state = initial, action = {}) {
       return Object.assign({}, state, { slides: action.slides });
 
     case SLIDE_CHANGED_FROM_SERVER:
-      // need to redirect if ignoreSlideChange = true
-      return Object.assign({}, state, { needToRedirect: action.data });
+      return Object.assign({}, state, {
+        activeSlide: action.data ? action.data.slide : 1
+      });
 
     default:
       return state;
