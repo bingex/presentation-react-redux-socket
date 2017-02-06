@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import login from './login';
-import slides from './slides';
+import loginReducer from './loginReducer';
+import slidesReducer from './slidesReducer';
 
 export default combineReducers({
-  login,
-  slides
+  loginReducer,
+  slidesReducer
 });

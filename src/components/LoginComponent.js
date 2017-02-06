@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../actions';
+import { login, setSecret } from '../actions';
 
 class LoginComponent extends React.Component {
   state = {
@@ -10,15 +10,14 @@ class LoginComponent extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: [e.target.value] });
+    this.props.setSecret(e.target.value);
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    let secret = this.state.secret;
-
-    if (secret.length > 0) {
-      this.props.login(secret);
+    if (this.props.secret.length > 0) {
+      this.props.login(this.props.secret);
     }
   };
 
@@ -38,11 +37,17 @@ class LoginComponent extends React.Component {
 
     return (
       <div>
-        {form}
-        {/* {this.props.login ? <Redirect to="/slides" /> : form} */}
+        {this.props.auth === 'granted' ? <Redirect to="/slides" /> : form}
       </div>
     );
   }
 }
 
-export default connect(null, { login })(LoginComponent);
+function mapStateToProps(state, props) {
+  return {
+    auth: state.loginReducer.auth,
+    secret: state.loginReducer.secret
+  };
+}
+
+export default connect(mapStateToProps, { login, setSecret })(LoginComponent);

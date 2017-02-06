@@ -21,7 +21,7 @@ class SlidesComponent extends React.Component {
 
     return (
       <div className="card-wrapper">
-        {this.props.login ? slides : <Redirect to="/login" />}
+        {this.props.auth === 'granted' ? slides : <Redirect to="/login" />}
       </div>
     );
   }
@@ -29,8 +29,8 @@ class SlidesComponent extends React.Component {
 
 function mapStateToProps(state, props) {
   return {
-    slides: state.slides,
-    login: state.login.auth
+    slides: state.slidesReducer.slides,
+    auth: state.loginReducer.auth
   };
 }
 

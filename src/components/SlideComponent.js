@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchSlides } from '../actions';
+import { fetchSlides, slideChange } from '../actions';
 import styled from 'styled-components';
 
-class SingleSlideComponent extends React.Component {
+class SlideComponent extends React.Component {
   state = {
     slideFromServer: false
   };
@@ -13,17 +13,12 @@ class SingleSlideComponent extends React.Component {
     if (this.props.slides.length === 0) {
       this.props.fetchSlides();
     }
-
-    this.props.socket.on('navigate', function(data) {
-      this.setState({ slideFromServer: data.id });
-    });
   }
 
   linkClickHandler = e => {
-    this.props.socket.emit('slide-changed', {
-      id: this.props.params.id,
-      key: this.props.secret
-    });
+    if (this.props.ignoreSlideChange) {
+      this.props.slideChange(this.props.params.id, this.props.secret);
+    }
   };
 
   render() {
@@ -32,9 +27,9 @@ class SingleSlideComponent extends React.Component {
     );
 
     const SlideWrapper = styled.div`
-      height: 100%;
-      width: 100%;
-      backgroundColor: ${currSlide ? currSlide.background : 'white'}
+      height: 100vh;
+      width: 100vw;
+      backgroundColor: ${currSlide ? currSlide.background : 'white'};
     `;
 
     const nextSlide = this.props.slides.find(
@@ -78,7 +73,7 @@ class SingleSlideComponent extends React.Component {
 
     return (
       <div>
-        {this.props.login
+        {this.props.auth === 'granted'
           ? this.state.slideFromServer
               ? <Redirect to={`slides/${this.state.slideFromServer}`} />
               : slide
@@ -90,9 +85,13 @@ class SingleSlideComponent extends React.Component {
 
 function mapStateToProps(state, props) {
   return {
-    slides: state.slides,
-    login: state.login.auth
+    slides: state.slidesReducer.slides,
+    auth: state.loginReducer.auth,
+    secret: state.loginReducer.secret,
+    ignoreSlideChange: state.slidesReducer.ignoreSlideChange
   };
 }
 
-export default connect(mapStateToProps, { fetchSlides })(SingleSlideComponent);
+export default connect(mapStateToProps, { fetchSlides, slideChange })(
+  SlideComponent
+);

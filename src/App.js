@@ -4,7 +4,7 @@ import { TransitionMotion, spring } from 'react-motion';
 
 import LoginComponent from './components/LoginComponent';
 import SlidesComponent from './components/SlidesComponent';
-import SingleSlideComponent from './components/SingleSlideComponent';
+import SlideComponent from './components/SlideComponent';
 
 class App extends Component {
   render() {
@@ -93,7 +93,7 @@ class App extends Component {
         <Route exact path="/" render={() => <Redirect to="/login" />} />
         <Route exact path="/login" component={LoginComponent} />
         <Route exact path="/slides" component={SlidesComponent} />
-        <FadeRoute path="/slides/:id" component={SingleSlideComponent} />
+        <FadeRoute path="/slides/:id" component={SlideComponent} />
       </div>
     );
   }
