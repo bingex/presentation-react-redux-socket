@@ -4,6 +4,7 @@ export const LOGIN_RESULT = 'LOGIN_RESULT';
 export const SET_SECRET = 'SET_SECRET';
 export const SLIDE_CHANGED = 'SLIDE_CHANGED';
 export const SLIDE_CHANGED_FROM_SERVER = 'SLIDE_CHANGED_FROM_SERVER';
+export const REFRESH_STATE = 'REFRESH_STATE';
 
 import { slides } from './data/slides';
 
@@ -37,5 +38,11 @@ export function login(secret) {
     type: LOGIN,
     meta: { remote: true },
     secret
+  };
+}
+
+export function refreshActiveState() {
+  return {
+    type: REFRESH_STATE
   };
 }

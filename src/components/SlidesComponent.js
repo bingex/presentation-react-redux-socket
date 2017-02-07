@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchSlides } from '../actions';
+import { fetchSlides, slideChange } from '../actions';
 import { browserHistory } from 'react-router';
 
 class SlidesComponent extends React.Component {
@@ -16,14 +16,23 @@ class SlidesComponent extends React.Component {
     }
   }
 
+  clickHandler(id) {
+    this.props.slideChange(id, this.props.secret);
+  }
+
   render() {
     const slides = this.props.slides.map(item => {
       return (
-        <div key={item.id} className="card">
+        <Link
+          to={`/slides/${item.id}`}
+          key={item.id}
+          className="card"
+          onClick={() => this.clickHandler(item.id)}
+          style={{ backgroundImage: 'url(' + item.img + ')' }}
+        >
           <h4>{item.title}</h4>
           <p>{item.description}</p>
-          <Link to={`/slides/${item.id}`} className="card-link">Open slide</Link>
-        </div>
+        </Link>
       );
     });
 
@@ -38,8 +47,9 @@ class SlidesComponent extends React.Component {
 function mapStateToProps(state, props) {
   return {
     slides: state.slidesReducer.slides,
-    auth: state.loginReducer.auth
+    auth: state.loginReducer.auth,
+    secret: state.loginReducer.secret
   };
 }
 
-export default connect(mapStateToProps, { fetchSlides })(SlidesComponent);
+export default connect(mapStateToProps, { fetchSlides, slideChange })(SlidesComponent);

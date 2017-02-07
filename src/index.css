@@ -22,12 +22,27 @@ p, h1, h4 {
 }
 
 .card {
-  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 400px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
   margin: 10px;
   border-radius: 3px;
-  padding: 20px
+  padding: 20px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 24px;
+}
+
+.card:focus {
+  color: #000000;
+  text-decoration: none''
+}
+
+.card:active {
+  color: #000000;
+  text-decoration: none''
 }
 
 .card h4 {
@@ -58,15 +73,22 @@ p, h1, h4 {
   margin: 5px;
   transition: all .2s linear;
   font-size: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;  
 }
 
 .slide-link:hover {
+  border: none;
+  outline: none;  
   text-decoration: none;
   color: #111111;
   background: #ffffff;
 }
 
 .slide-link:active {
+  border: none;
+  outline: none;
   text-decoration: none;
   color: #111111;
 }
