@@ -30,7 +30,7 @@ class SlidesComponent extends React.Component {
     return (
       <div className="card-wrapper">
         {this.props.auth === 'granted' ? slides : ''}
-      </div> 
+      </div>
     );
   }
 }

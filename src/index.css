@@ -6,7 +6,7 @@ html, body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Muli', sans-serif;
   background-color: #ebeff2;
 }
 
@@ -46,8 +46,8 @@ p, h1, h4 {
 
 .slide-link {
   height: 36px;
-  padding: 0 30px;
-  background: white;
+  padding: 0 25px;
+  background: rgba(256, 256, 256, 0.3);
   border-radius: 3px;
   display: flex;
   justify-content: center;
@@ -56,11 +56,14 @@ p, h1, h4 {
   color: #111111;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
   margin: 5px;
+  transition: all .2s linear;
+  font-size: 14px;
 }
 
 .slide-link:hover {
   text-decoration: none;
   color: #111111;
+  background: #ffffff;
 }
 
 .slide-link:active {
@@ -78,4 +81,65 @@ p, h1, h4 {
   right: 15px;
   bottom: 15px;
   display: flex;
+}
+
+.slide {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login__input {
+  margin-top: 15px;
+  height: 32px;
+  border: none;
+  outline: none;
+  padding: 2px 10px;
+  font-size: 16px;
+  border-radius: 3px 0 0 3px;
+  width: 220px;
+  max-width: 90%;
+}
+
+.login__control {
+  display: flex;
+  justify-content: center;
+}
+
+.login__btn {
+  font-weight: bold;
+  margin-top: 15px;
+  height: 36px;
+  border: none;
+  outline: none;
+  padding: 2px 15px;
+  font-size: 16px;
+  border-radius: 0 3px 3px 0;
+  color: white;
+  background-color: #8bc34a;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.login__btn:hover {
+  background-color: #668444;
+}
+
+.login__input:active {
+  border: none;
+  outline: none;
+}
+
+.login__input:focus {
+  border: none;
+  outline: none;
+}
+
+.login__title {
+  width: 220px;
+  max-width: 90%;
+  font-size: 26px;
+  color: #ffffff;
 }

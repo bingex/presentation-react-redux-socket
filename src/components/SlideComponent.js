@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import styled from 'styled-components';
 import { fetchSlides, slideChange } from '../actions';
 import { browserHistory } from 'react-router';
+import Swipeable from 'react-swipeable';
+
+// import firstImg from '../data/images/slides/1.jpeg';
+// import secondImg from '../data/images/slides/2.jpeg';
+// import thirdImg from '../data/images/slides/3.jpg';
 
 class SlideComponent extends React.Component {
   state = {
     next: 1,
-    prev: 1
+    prev: 1,
+    img: ''
   };
 
   componentWillMount() {
@@ -16,7 +21,8 @@ class SlideComponent extends React.Component {
       this.props.fetchSlides();
     }
 
-    this.prepareButtons(this.props.slides, +this.props.params.id)
+    this.prepareButtons(this.props.slides, +this.props.params.id);
+    this.setActiveBg(this.props.slides, +this.props.params.id);
   }
 
   componentWillReceiveProps(props) {
@@ -30,7 +36,8 @@ class SlideComponent extends React.Component {
       return false;
     }
 
-    this.prepareButtons(props.slides, +props.params.id)
+    this.prepareButtons(props.slides, +props.params.id);
+    this.setActiveBg(props.slides, +props.params.id);
   }
 
   prepareButtons = (slides, active) => {
@@ -41,7 +48,15 @@ class SlideComponent extends React.Component {
       next: nextItem ? nextItem.id : 1,
       prev: prevItem ? prevItem.id : slides.length
     });
-  }
+  };
+
+  setActiveBg = (slides, active) => {
+    let activeImg = slides.find(item => item.id === active);
+
+    if (activeImg) {
+      this.setState({ img: activeImg.img });
+    }
+  };
 
   linkClickHandler = e => {
     if (this.state[e.target.name]) {
@@ -49,47 +64,35 @@ class SlideComponent extends React.Component {
     }
   };
 
+  swipedRight = () => {
+    this.props.slideChange(this.state.next, this.props.secret);
+    // this.setActiveBg(this.props.slides, +this.props.params.id);
+  };
+
+  swipedLeft = () => {
+    this.props.slideChange(this.state.prev, this.props.secret);
+    // sthis.setActiveBg(this.props.slides, +this.props.params.id);
+  };
+
   render() {
-    const currSlide = this.props.slides.find(item => item.id === +this.props.params.id);
-
-    const SlideWrapper = styled.div`
-      height: 100vh;
-      width: 100vw;
-      backgroundColor: ${currSlide ? currSlide.background : 'white'};
-    `;
-
-    const slide = (
-      <SlideWrapper>
-        <div className="buttons">
-          <Link to="/slides" className="slide-link">All</Link>
-          {this.props.slides.length > 0
-            ? <Link
-                to={`/slides/${this.state.prev}`}
-                className="slide-link"
-                onClick={this.linkClickHandler}
-                name="prev"
-              >
-                Prev
-              </Link>
-            : null}
-          {this.props.slides.length > 0
-            ? <Link
-                to={`/slides/${this.state.next}`}
-                className="slide-link"
-                onClick={this.linkClickHandler}
-                name="next"
-              >
-                Next
-              </Link>
-            : null}
-        </div>
-      </SlideWrapper>
-    );
+    const imgBg = {
+      backgroundImage: 'url(' + this.state.img + ')'
+    };
 
     return (
-      <div>
-        {slide}
-      </div>
+      <Swipeable onSwipedLeft={this.swipedRight} onSwipedRight={this.swipedLeft}>
+        <div className="slide" style={imgBg}>
+          <div className="buttons">
+            <Link to="/slides" className="slide-link">All</Link>
+            <Link to={`/slides/${this.state.prev}`} className="slide-link" onClick={this.linkClickHandler} name="prev">
+              Prev
+            </Link>
+            <Link to={`/slides/${this.state.next}`} className="slide-link" onClick={this.linkClickHandler} name="next">
+              Next
+            </Link>
+          </div>
+        </div>
+      </Swipeable>
     );
   }
 }
