@@ -2,7 +2,7 @@ import { FETCH_SLIDES, SLIDE_CHANGED_FROM_SERVER } from '../actions';
 
 const initial = {
   slides: [],
-  activeSlide: 1
+  activeSlide: false
 };
 
 export default function slidesReducer(state = initial, action = {}) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login, setSecret } from '../actions';
+import { browserHistory } from 'react-router';
 
 class LoginComponent extends React.Component {
   handleChange = e => {
@@ -16,19 +16,19 @@ class LoginComponent extends React.Component {
     }
   };
 
+  componentWillReceiveProps(props) {
+    if (props.auth === 'granted') {
+      browserHistory.push('/slides');
+    }
+  }
+
   render() {
-    const form = (
+    return (
       <form onSubmit={this.handleSubmit}>
         <h1>Input presentation secret key</h1>
 
         <input name="secret" type="text" value={this.props.secret} onChange={this.handleChange} />
       </form>
-    );
-
-    return (
-      <div>
-        {this.props.auth === 'granted' ? <Redirect to="/slides" /> : form}
-      </div>
     );
   }
 }

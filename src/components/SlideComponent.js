@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchSlides, slideChange } from '../actions';
+import { Link } from 'react-router';
 import styled from 'styled-components';
+import { fetchSlides, slideChange } from '../actions';
+import { browserHistory } from 'react-router';
 
 class SlideComponent extends React.Component {
   state = {
@@ -10,17 +11,35 @@ class SlideComponent extends React.Component {
     prev: 1
   };
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.slides.length === 0) {
       this.props.fetchSlides();
     }
 
-    const nextItem = this.props.slides.find(item => item.id === +this.props.params.id + 1);
-    const prevItem = this.props.slides.find(item => item.id === +this.props.params.id - 1);
+    this.prepareButtons(this.props.slides, +this.props.params.id)
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.auth !== 'granted') {
+      browserHistory.push('/login');
+      return false;
+    }
+
+    if (props.activeSlide && props.activeSlide !== +props.params.id) {
+      browserHistory.push(`/slides/${props.activeSlide}`);
+      return false;
+    }
+
+    this.prepareButtons(props.slides, +props.params.id)
+  }
+
+  prepareButtons = (slides, active) => {
+    const nextItem = slides.find(item => item.id === active + 1);
+    const prevItem = slides.find(item => item.id === active - 1);
 
     this.setState({
       next: nextItem ? nextItem.id : 1,
-      prev: prevItem ? prevItem.id : this.props.slides.length
+      prev: prevItem ? prevItem.id : slides.length
     });
   }
 
@@ -69,11 +88,7 @@ class SlideComponent extends React.Component {
 
     return (
       <div>
-        {this.props.auth === 'granted'
-          ? this.props.activeSlide !== +this.props.params.id
-              ? <Redirect push to={`/slides/${this.props.activeSlide}`} />
-              : slide
-          : <Redirect to="/login" />}
+        {slide}
       </div>
     );
   }
