@@ -31,7 +31,6 @@ class SlidesComponent extends React.Component {
           style={{ backgroundImage: 'url(' + item.img + ')' }}
         >
           <h4>{item.title}</h4>
-          <p>{item.description}</p>
         </Link>
       );
     });

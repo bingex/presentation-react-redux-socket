@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, setSecret } from '../actions';
-import { browserHistory } from 'react-router';
 import styled from 'styled-components';
 import loginImage from '../data/images/login.png';
 
@@ -37,7 +36,7 @@ class LoginComponent extends React.Component {
 
   componentWillReceiveProps(props) {
     if (props.auth === 'granted') {
-      browserHistory.push('/slides');
+      this.context.router.push('/slides');
     }
   }
 
@@ -48,7 +47,12 @@ class LoginComponent extends React.Component {
           <h1 className="login__title">Input presentation secret key:</h1>
 
           <div className="login__control">
-            <input className="login__input" type="text" value={this.state.secret} onChange={this.handleChange} />
+            <input
+              className="login__input"
+              type="text"
+              value={this.state.secret}
+              onChange={this.handleChange}
+            />
             <button className="login__btn" type="submit">Start</button>
           </div>
         </form>
@@ -63,5 +67,9 @@ function mapStateToProps(state, props) {
     secret: state.loginReducer.secret
   };
 }
+
+LoginComponent.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, { login, setSecret })(LoginComponent);

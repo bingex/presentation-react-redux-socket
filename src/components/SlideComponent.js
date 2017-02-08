@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchSlides, slideChange, refreshActiveState } from '../actions';
-import { browserHistory } from 'react-router';
 import Swipeable from 'react-swipeable';
 
 class SlideComponent extends React.Component {
@@ -21,14 +20,14 @@ class SlideComponent extends React.Component {
 
   componentWillReceiveProps(props) {
     if (props.auth !== 'granted') {
-      browserHistory.push('/login');
+      this.context.router.push('/login');
       return false;
     }
 
     this.prepareButtons(props.slides, +props.params.id);
 
     if (props.activeSlide && props.activeSlide !== +props.params.id) {
-      browserHistory.push(`/slides/${props.activeSlide}`);
+      this.context.router.push(`/slides/${props.activeSlide}`);
     }
 
     this.props.refreshActiveState();
@@ -47,37 +46,44 @@ class SlideComponent extends React.Component {
   linkClickHandler = e => {
     if (this.state[e.target.name]) {
       this.props.slideChange(this.state[e.target.name], this.props.secret);
-      browserHistory.push(`/slides/${this.state[e.target.name]}`);
+      this.context.router.push(`/slides/${this.state[e.target.name]}`);
     }
   };
 
   swipedRight = () => {
     this.props.slideChange(this.state.next, this.props.secret);
-    browserHistory.push(`/slides/${this.state.next}`);
+    this.context.router.push(`/slides/${this.state.next}`);
   };
 
   swipedLeft = () => {
     this.props.slideChange(this.state.prev, this.props.secret);
-    browserHistory.push(`/slides/${this.state.prev}`);
+    this.context.router.push(`/slides/${this.state.prev}`);
   };
 
   render() {
     const styl = this.props.slides.length > 0
-      ? { backgroundImage: 'url(' + this.props.slides.find(item => item.id === +this.props.params.id).img + ')' }
+      ? {
+          backgroundImage: (
+            'url(' + this.props.slides.find(item => item.id === +this.props.params.id).img + ')'
+          )
+        }
       : {};
 
     return (
-      <Swipeable onSwipedLeft={this.swipedRight} onSwipedRight={this.swipedLeft}>
-        <div className="slide" style={styl}>
-          <div className="buttons">
-            <Link to="/slides" className="slide-link">All</Link>
-            <button className="slide-link" onClick={this.linkClickHandler} name="prev">
-              Prev
-            </button>
-            <button className="slide-link" onClick={this.linkClickHandler} name="next">
-              Next
-            </button>
-          </div>
+      <Swipeable
+        onSwipedLeft={this.swipedRight}
+        onSwipedRight={this.swipedLeft}
+        className="slide"
+        style={styl}
+      >
+        <div className="buttons">
+          <Link to="/slides" className="slide-link">All</Link>
+          <button className="slide-link" onClick={this.linkClickHandler} name="prev">
+            Prev
+          </button>
+          <button className="slide-link" onClick={this.linkClickHandler} name="next">
+            Next
+          </button>
         </div>
       </Swipeable>
     );
@@ -93,4 +99,10 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSlides, slideChange, refreshActiveState })(SlideComponent);
+SlideComponent.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps, { fetchSlides, slideChange, refreshActiveState })(
+  SlideComponent
+);
