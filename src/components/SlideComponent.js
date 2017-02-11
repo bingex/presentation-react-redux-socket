@@ -19,10 +19,10 @@ class SlideComponent extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.auth !== 'granted') {
-      this.context.router.push('/login');
-      return false;
-    }
+    // if (props.auth !== 'granted') {
+    //   this.context.router.push('/login');
+    //   return false;
+    // }
 
     this.prepareButtons(props.slides, +props.params.id);
 
@@ -63,19 +63,24 @@ class SlideComponent extends React.Component {
   render() {
     const styl = this.props.slides.length > 0
       ? {
-          backgroundImage: (
-            'url(' + this.props.slides.find(item => item.id === +this.props.params.id).img + ')'
-          )
+          backgroundImage: 'url(' + this.props.slides.find(item => item.id === +this.props.params.id).img + ')'
         }
       : {};
 
+    const markup = this.props.slides.length > 0
+      ? { __html: this.props.slides.find(item => item.id === +this.props.params.id).html }
+      : { __html: '' };
+
+    const title = this.props.slides.length > 0
+      ? this.props.slides.find(item => item.id === +this.props.params.id).title
+      : '';
+
     return (
-      <Swipeable
-        onSwipedLeft={this.swipedRight}
-        onSwipedRight={this.swipedLeft}
-        className="slide"
-        style={styl}
-      >
+      <Swipeable onSwipedLeft={this.swipedRight} onSwipedRight={this.swipedLeft} className="slide" style={styl}>
+        <h4 className="slide-main-title">{title}</h4>
+
+        <div className="slide-wrapper" dangerouslySetInnerHTML={markup} />
+
         <div className="buttons">
           <Link to="/slides" className="slide-link">All</Link>
           <button className="slide-link" onClick={this.linkClickHandler} name="prev">
@@ -103,6 +108,4 @@ SlideComponent.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, { fetchSlides, slideChange, refreshActiveState })(
-  SlideComponent
-);
+export default connect(mapStateToProps, { fetchSlides, slideChange, refreshActiveState })(SlideComponent);

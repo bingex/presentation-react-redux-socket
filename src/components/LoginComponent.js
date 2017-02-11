@@ -44,15 +44,10 @@ class LoginComponent extends React.Component {
     return (
       <LoginWrapper>
         <form className="login" onSubmit={this.handleSubmit}>
-          <h1 className="login__title">Input presentation secret key:</h1>
+          <h1 className="login__title">Presentation secret key:</h1>
 
           <div className="login__control">
-            <input
-              className="login__input"
-              type="text"
-              value={this.state.secret}
-              onChange={this.handleChange}
-            />
+            <input className="login__input" type="text" value={this.state.secret} onChange={this.handleChange} />
             <button className="login__btn" type="submit">Start</button>
           </div>
         </form>

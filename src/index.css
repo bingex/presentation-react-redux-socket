@@ -171,8 +171,6 @@ p, h1, h4 {
 }
 
 .login__title {
-  width: 220px;
-  max-width: 90%;
   font-size: 26px;
   color: #ffffff;
 }
@@ -193,4 +191,53 @@ p, h1, h4 {
 
 .stateanimation-leave.stateanimation-leave-active {
   opacity: 0;
+}
+
+.slide-title {
+  color: #2c3c42;
+  font-weight: normal;
+  font-size: 30px;
+  padding: 0 0 30px 0;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.slide-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.slide-description {
+  color: #2c3c42;
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.slide-description li {
+  padding: 10px 0;
+}
+
+.slide-main-title {
+  color: #ffffff;
+  font-size: 20px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.dev {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dev-pic {
+  border-radius: 100%;
+}
+
+.dev-title {
+  padding-left: 20px;
 }
