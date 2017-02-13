@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -240,4 +240,98 @@ p, h1, h4 {
 
 .dev-title {
   padding-left: 20px;
+}*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+.slide {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('./data/images/slide.png');
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sub-wrapper {
+  max-width: 850px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+  line-height: 1.2em;
+  color: #2c3c42;
+  font-size: 30px;
+  padding: 20px;
+}
+
+.headline {
+  color: #ffffff;
+  margin: 0;
+  font-size: 18px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+@media (max-width: 520px) {
+  .title {
+    line-height: 1.2em;
+    font-size: 16px;
+    padding: 5px;
+    margin: 5px;
+  }
+}
+
+.description {
+  color: #576267;
+  font-size: 20px;
+  padding: 15px 0;
+  line-height: 1.4em;
+}
+
+@media (max-width: 520px) {
+  .description {
+    font-size: 14px;
+    padding: 2px 0;
+    line-height: 1.2em;
+  }
+}
+
+.btn-wrapper {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.btn {
+  border: 1px solid #000000;
+  padding: 5px;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #000000;
+  color: #ffffff;
 }

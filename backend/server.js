@@ -19,17 +19,16 @@ let secret = '1';
 // Initialize a new socket.io application
 let presentation = io.on('connection', function(socket) {
   // Clients send the 'slide-changed' message whenever they navigate to a new slide.
-  socket.on('slide-changed', data => {
-    if (data.key === secret) {
-      presentation.emit('navigate', {
-        id: data.id
-      });
-    }
-  });
+  // socket.on('slide-changed', data => {
+  //   if (data.key === secret) {
+  //     presentation.emit('navigate', {
+  //       id: data.id
+  //     });
+  //   }
+  // });
 
   socket.on('action', function(action) {
     switch (action.type) {
-      // A new client has come online. Check the secret key and emit a "granted" or "denied" message.
       case 'LOGIN':
         socket.emit('action', {
           type: 'LOGIN_RESULT',
