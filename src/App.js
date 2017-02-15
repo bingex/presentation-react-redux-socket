@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swipeable from 'react-swipeable';
+import { Link } from 'react-router';
 import { slideChange } from './actions';
 
 class App extends Component {
@@ -47,6 +48,10 @@ class App extends Component {
   }
 
   componentWillMount() {
+    if (!this.props.auth) {
+      this.context.router.push('/login');
+    }
+
     window.addEventListener('keyup', e => {
       if (e.keyCode === 39) {
         this.nextSlide();
@@ -57,14 +62,18 @@ class App extends Component {
   }
 
   render() {
+    const buttons = (
+      <div className="btn-wrapper">
+        <Link className="btn" to="/slides">All</Link>
+        <button className="btn" onClick={this.prevSlide}>Prev</button>
+        <button className="btn" onClick={this.nextSlide}>Next</button>
+      </div>
+    );
+
     return (
       <Swipeable onSwipedLeft={this.nextSlide} onSwipedRight={this.prevSlide}>
         {this.props.children}
-
-        <div className="btn-wrapper">
-          <button className="btn" onClick={this.prevSlide}>Prev</button>
-          <button className="btn" onClick={this.nextSlide}>Next</button>
-        </div>
+        {this.props.location.pathname !== '/login' && this.props.location.pathname !== '/slides' ? buttons : null}
       </Swipeable>
     );
   }
@@ -76,7 +85,8 @@ App.contextTypes = {
 
 function mapStateToProps(state, props) {
   return {
-    activeSlide: state.slidesReducer.activeSlide
+    activeSlide: state.slidesReducer.activeSlide,
+    auth: state.loginReducer.auth
   };
 }
 
