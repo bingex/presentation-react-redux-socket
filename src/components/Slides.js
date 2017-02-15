@@ -1,5 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+
+const wrapper = {
+  maxWidth: '1000px',
+  width: '90%',
+  padding: '50px',
+  margin: '0 auto',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center'
+}
+
+const singleSlide = {
+  margin: '20px',
+  height: '100px',
+  width: '250px',
+  background: '#42b983',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: '#ffffff',
+  padding: '20px',
+  cursor: 'pointer',
+  borderRadius: '2px',
+  fontSize: '18px'
+}
 
 class Slides extends React.Component {
   state = {
@@ -63,13 +87,13 @@ class Slides extends React.Component {
 
   render() {
     const list = this.state.slides.map((item, index) => {
-      return <SingleSlide key={index} onClick={() => this.goSlide(item.id)}>{item.name}</SingleSlide>;
+      return <div style={singleSlide} key={index} onClick={() => this.goSlide(item.id)}>{item.name}</div>;
     });
 
     return (
-      <Wrapper>
+      <div style={wrapper}>
         {list}
-      </Wrapper>
+      </div>
     );
   }
 }
@@ -79,28 +103,3 @@ Slides.contextTypes = {
 };
 
 export default Slides;
-
-const Wrapper = styled.div`
-  maxWidth: 1000px;
-  width: 90%;
-  padding: 50px;
-  margin: 0 auto;
-  display: flex;
-  flexWrap: wrap;
-  justifyContent: center;
-`;
-
-const SingleSlide = styled.div`
-  margin: 20px;
-  height: 100px;
-  width: 250px;
-  background: #42b983;
-  display: flex;
-  justifyContent: center;
-  alignItems: center;
-  color: #ffffff;
-  padding: 20px;
-  cursor: pointer;
-  borderRadius: 2px;
-  fontSize: 18px;
-`;

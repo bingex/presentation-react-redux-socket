@@ -1,9 +1,48 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import addyImg from '../data/images/addy.jpg';
 import ilyaImg from '../data/images/ilya.jpeg';
 import paulImg from '../data/images/paul.webp';
+
+const devs = {
+  height: '100vh',
+  width: '100vw',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+const dev = {
+  display: 'flex',
+  justifyContent: 'flexStart',
+  alignItems: 'center',
+  padding: '10px'
+}
+
+const title = {
+  paddingLeft: '20px'
+}
+
+const name = {
+  fontSize: '24px',
+  fontSeight: 'bold',
+}
+
+const imgStyle = {
+  width: '180px',
+  borderRadius: '100%'
+}
+
+const whoIs = {
+  color: '#576267',
+  fontSize: '16px',
+  paddingLeft: '10px'
+}
+
+const twitter = {
+  color: '#1da1f2',
+  fontSize: '16px'
+}
 
 class Slide10 extends React.Component {
   state = {
@@ -33,65 +72,25 @@ class Slide10 extends React.Component {
   render() {
     const list = this.state.description.map((item, index) => {
       return (
-        <Dev key={index}>
-          <Img src={item.img} alt={item.name} />
-          <Title>
-            <Name>{item.name}</Name>
-            <WhoIs>{item.whois}</WhoIs>
-            <Twitter>{item.twitter}</Twitter>
-          </Title>
-        </Dev>
+        <div style={dev} key={index}>
+          <img style={imgStyle} src={item.img} alt={item.name} />
+          <span style={title}>
+            <span style={name}>{item.name}</span>
+            <span style={whoIs}>{item.whois}</span>
+            <span style={twitter}>{item.twitter}</span>
+          </span>
+        </div>
       );
     });
 
     return (
-      <Devs>
+      <div style={devs}>
         <div>
           {list}
         </div>
-      </Devs>
+      </div>
     );
   }
 }
 
 export default Slide10;
-
-const Devs = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justifyContent: center;
-  alignItems: center;
-`;
-
-const Dev = styled.div`
-  display: flex;
-  justifyContent: flex-start;
-  alignItems: center;
-  padding: 10px;
-`;
-
-const Title = styled.span`
-  paddingLeft: 20px;
-`;
-
-const Name = styled.span`
-  fontSize: 24px;
-  fontSeight: bold;
-`;
-
-const Img = styled.img`
-  width: 180px;
-  borderRadius: 100%;
-`;
-
-const WhoIs = styled.span`
-  color: #576267;
-  fontSize: 16px;
-  paddingLeft: 10px;
-`;
-
-const Twitter = styled.span`
-  color: #1da1f2;
-  fontSize: 16px;
-`;

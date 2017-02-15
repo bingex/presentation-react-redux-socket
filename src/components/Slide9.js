@@ -1,5 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+
+const tools = {
+  height: '100vh',
+  width: '100vw',
+  display: 'flex',
+  flexWrap: 'wrap'
+}
 
 class Slide9 extends React.Component {
   state = {
@@ -25,18 +31,12 @@ class Slide9 extends React.Component {
     });
 
     return (
-      <Tools>
+      <div style={tools}>
         {list}
-      </Tools>
+      </div>
     );
   }
 }
 
 export default Slide9;
 
-const Tools = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-`;
