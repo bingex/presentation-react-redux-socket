@@ -1,56 +1,105 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, setSecret } from '../actions';
 
-class LoginComponent extends React.Component {
-  state = {
-    secret: ''
-  };
+import { setSecret, login } from '../actions';
+
+import loginImg from '../data/images/main.png';
+
+const wrapper = {
+  height: '100vh',
+  width: '100vw',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundImage: `url(${loginImg})`,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+const title = {
+  fontSize: '26px',
+  color: '#ffffff',
+  marginBottom: '0'
+}
+
+const control = {
+  display: 'flex',
+  justifyContent: 'center'
+}
+
+const loginInput = {
+  marginTop: '15px',
+  height: '32px',
+  border: 'none',
+  outline: 'none',
+  padding: '2px 10px',
+  fontSize: '16px',
+  borderRadius: '3px 0 0 3px',
+  width: '220px',
+  maxWidth: '90%'
+}
+
+const btn = {
+  fontWeight: 'bold',
+  marginTop: '15px',
+  height: '36px',
+  border: 'none',
+  outline: 'none',
+  padding: '2px 15px',
+  fontSize: '16px',
+  borderRadius: '0 3px 3px 0',
+  color: 'white',
+  backgroundColor: '#8bc34a',
+  transition: 'all 0.2s linear',
+  cursor: 'pointer',
+}
+
+class Login extends React.Component {
+  componentWillReceiveProps(props) {
+    if (props.auth) {
+      this.context.router.push('/slides');
+    }
+  }
 
   handleChange = e => {
-    this.setState({ secret: e.target.value });
-    this.props.setSecret(this.secret);
+    this.props.setSecret(e.target.value);
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    if (this.state.secret.length > 0) {
-      this.props.login(this.state.secret);
+    if (this.props.secret.length > 0) {
+      this.props.login(this.props.secret);
     }
   };
 
-  componentWillReceiveProps(props) {
-    if (props.auth === 'granted') {
-      this.context.router.push('/slides');
-    }
-  }
-
-  render() {
+  render () {
     return (
-      <div>
-        <form className="login" onSubmit={this.handleSubmit}>
-          <h1 className="login__title">Presentation secret key:</h1>
+      <div style={wrapper}>
+        <form onSubmit={this.handleSubmit}>
+          <h1 style={title}>Presentation secret key:</h1>
 
-          <div className="login__control">
-            <input className="login__input" type="text" value={this.state.secret} onChange={this.handleChange} />
-            <button className="login__btn" type="submit">Start</button>
+          <div style={control}>
+            <input style={loginInput} type="text" value={this.props.secret} onChange={this.handleChange} />
+            <button style={btn} type="submit">Start</button>
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
-function mapStateToProps(state, props) {
-  return {
-    auth: state.loginReducer.auth,
-    secret: state.loginReducer.secret
-  };
-}
-
-LoginComponent.contextTypes = {
+Login.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, { login, setSecret })(LoginComponent);
+function mapStateToProps(state, props) {
+  return {
+    secret: state.loginReducer.secret,
+    auth: state.loginReducer.auth
+  };
+}
+
+export default connect(mapStateToProps, {setSecret, login})(Login);
+

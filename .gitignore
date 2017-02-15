@@ -16,3 +16,5 @@ npm-debug.log
 
 # vs code settings
 .vscode
+
+backend/node_modules

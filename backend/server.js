@@ -31,9 +31,8 @@ let presentation = io.on('connection', function(socket) {
     switch (action.type) {
       case 'LOGIN':
         socket.emit('action', {
-          type: 'LOGIN_RESULT',
-          meta: { remote: true },
-          access: action.secret[0] === secret ? 'granted' : 'denied'
+          type: 'LOGIN_SUCCESS',
+          meta: { remote: true }
         });
 
       case 'SLIDE_CHANGED':

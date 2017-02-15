@@ -1,14 +1,17 @@
-import { LOGIN_RESULT, SET_SECRET } from '../actions';
+import { LOGIN, LOGIN_SUCCESS, SET_SECRET } from '../actions';
 
 const initial = {
-  auth: 'denied',
+  auth: false,
   secret: ''
 };
 
 export default function loginReducer(state = initial, action = {}) {
   switch (action.type) {
-    case LOGIN_RESULT:
+    case LOGIN:
       return Object.assign({}, state, { auth: action.access });
+
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, { auth: true });
 
     case SET_SECRET:
       return Object.assign({}, state, { secret: action.secret });

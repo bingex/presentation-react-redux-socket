@@ -1,5 +1,5 @@
 export const LOGIN = 'LOGIN';
-export const LOGIN_RESULT = 'LOGIN_RESULT';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const SET_SECRET = 'SET_SECRET';
 export const SLIDE_CHANGED = 'SLIDE_CHANGED';
 export const SLIDE_CHANGED_FROM_SERVER = 'SLIDE_CHANGED_FROM_SERVER';
