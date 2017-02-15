@@ -10,39 +10,40 @@ const devs = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'
-}
+};
 
 const dev = {
   display: 'flex',
   justifyContent: 'flexStart',
   alignItems: 'center',
-  padding: '10px'
-}
+  padding: '20px'
+};
 
 const title = {
   paddingLeft: '20px'
-}
+};
 
 const name = {
-  fontSize: '24px',
-  fontSeight: 'bold',
-}
+  fontSize: '26px',
+  fontSeight: 'bold'
+};
 
 const imgStyle = {
-  width: '180px',
+  width: '150px',
   borderRadius: '100%'
-}
+};
 
 const whoIs = {
   color: '#576267',
   fontSize: '16px',
-  paddingLeft: '10px'
-}
+  marginTop: '10px'
+};
 
 const twitter = {
   color: '#1da1f2',
-  fontSize: '16px'
-}
+  fontSize: '16px',
+  paddingLeft: '10px'
+};
 
 class Slide10 extends React.Component {
   state = {
@@ -75,9 +76,11 @@ class Slide10 extends React.Component {
         <div style={dev} key={index}>
           <img style={imgStyle} src={item.img} alt={item.name} />
           <span style={title}>
-            <span style={name}>{item.name}</span>
-            <span style={whoIs}>{item.whois}</span>
-            <span style={twitter}>{item.twitter}</span>
+            <div>
+              <span style={name}>{item.name}</span>
+              <span style={twitter}>{item.twitter}</span>
+            </div>
+            <p style={whoIs}>{item.whois}</p>
           </span>
         </div>
       );

@@ -8,7 +8,7 @@ const wrapper = {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center'
-}
+};
 
 const singleSlide = {
   margin: '20px',
@@ -23,7 +23,7 @@ const singleSlide = {
   cursor: 'pointer',
   borderRadius: '2px',
   fontSize: '18px'
-}
+};
 
 class Slides extends React.Component {
   state = {
@@ -87,7 +87,11 @@ class Slides extends React.Component {
 
   render() {
     const list = this.state.slides.map((item, index) => {
-      return <div style={singleSlide} key={index} onClick={() => this.goSlide(item.id)}>{item.name}</div>;
+      return (
+        <div style={singleSlide} key={index} onClick={() => this.goSlide(item.id)}>
+          {index + 1}. {item.name}
+        </div>
+      );
     });
 
     return (

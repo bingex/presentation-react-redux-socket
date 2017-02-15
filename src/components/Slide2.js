@@ -43,7 +43,7 @@ const Img = styled.img`
   paddingTop: 20px;
   display: flex;
   margin: auto;
-  width: 200px;
+  width: 20vh;
 
   @media (max-width: 520px) {
     display: none;
