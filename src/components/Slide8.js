@@ -1,13 +1,14 @@
 import React from 'react';
 
-class Slide8 extends React.Component {
+class Slide7 extends React.Component {
   state = {
-    headline: 'Rendering perfomance',
-    title: 'Pages should not only load quickly, but also run well; scrolling should be stick-to-finger fast, and animations and interactions should be silky smooth.',
+    headline: 'JavaScript optimization',
+    title: 'When it comes to Javascript there are some best practices to always keep in mind.',
     description: [
-      'Avoid setTimeout or setInterval for visual updates; always use requestAnimationFrame instead',
-      'Reduce the complexity of your selectors; use a class-centric methodology like BEM.',
-      'Reduce the number of elements on which style calculation must be calculated.'
+      'Move your scripts to the bottom of the page right before your </body> tag.',
+      'Use the async or defer directive to avoid render blocking.',
+      'Concatenate your JS files into one file (with HTTP/2 this is no longer as important).',
+      'Inline your javascript if it is small.'
     ]
   };
 
@@ -32,4 +33,4 @@ class Slide8 extends React.Component {
   }
 }
 
-export default Slide8;
+export default Slide7;

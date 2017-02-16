@@ -1,13 +1,15 @@
 ☐ Add state change animation
 ☐ Check slide description and add some visual additionals to slides
-  ☐ Slide 3
-  ☐ Slide 4
-  ☐ Slide 5
+  ✔ Slide 3 @done (2/16/2017, 10:14:09 PM)
+  ✔ Slide 4 @done (2/16/2017, 10:14:25 PM)
+  ✔ Slide 5 @done (2/16/2017, 10:14:39 PM)
   ☐ Slide 6
   ☐ Slide 7
   ☐ Slide 8
   ☐ Slide 9
+  ☐ Slide 10
 ☐ Add connected user list
 ☐ Add log out button
-☐ Deploy on Heroku
+☐ Deploy on Heroku or use Sergey's server
 ☐ Test presentation on large monitor
+☐ Add animation to images

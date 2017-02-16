@@ -1,5 +1,11 @@
 import React from 'react';
 
+const nojquery = {
+  fontSize: '2vh',
+  color: '#576267',
+  textAlign: 'right'
+};
+
 class Slide3 extends React.Component {
   state = {
     headline: 'Eliminating unnecessary downloads',
@@ -25,6 +31,11 @@ class Slide3 extends React.Component {
             <p className="title">{this.state.title}</p>
 
             <ul>{list}</ul>
+
+            <p style={nojquery}>
+              <span>*you might not need jquery</span><br />
+              <span style={{ color: '#34a853' }}>youmightnotneedjquery.com</span>
+            </p>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ const wrapper = {
   backgroundColor: 'rgba(0, 0, 0, 0.7)',
   backgroundBlendMode: 'multiply',
   backgroundImage: `url(${slideImg})`
-}
+};
 
 const Title = styled.p`
   lineHeight: 1.4em;
@@ -30,7 +30,7 @@ const Title = styled.p`
 class Slide1 extends React.Component {
   state = {
     headline: 'Perfomance goal 1.1',
-    title: 'What is website performance goals? Is it to make your site perform fast? Is it to make your site perform fast on any specific device?'
+    title: 'What is website performance goals? Is it to make your site perform fast? Or make your site perform fast on any specific device? Or something else?'
   };
 
   render() {

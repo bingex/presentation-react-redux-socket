@@ -14,6 +14,7 @@ import Slide7 from './components/Slide7';
 import Slide8 from './components/Slide8';
 import Slide9 from './components/Slide9';
 import Slide10 from './components/Slide10';
+import Slide11 from './components/Slide11';
 
 export default (
   <Route path="/" component={App}>
@@ -30,5 +31,6 @@ export default (
     <Route path="/slides/8" component={Slide8} />
     <Route path="/slides/9" component={Slide9} />
     <Route path="/slides/10" component={Slide10} />
+    <Route path="/slides/11" component={Slide11} />
   </Route>
 );

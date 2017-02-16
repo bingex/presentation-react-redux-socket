@@ -33,7 +33,7 @@ class App extends Component {
 
     pathArr = this.props.location.pathname.split('/');
     if (pathArr.length === 3) {
-      if (pathArr[2] < 10) {
+      if (pathArr[2] < 11) {
         path = `/slides/${+pathArr[2] + 1}`;
         this.context.router.push(path);
         this.props.slideChange(path);
@@ -73,7 +73,9 @@ class App extends Component {
     return (
       <Swipeable onSwipedLeft={this.nextSlide} onSwipedRight={this.prevSlide}>
         {this.props.children}
-        {this.props.location.pathname !== '/login' && this.props.location.pathname !== '/slides' ? buttons : null}
+        {this.props.location.pathname !== '/login' && this.props.location.pathname !== '/slides'
+          ? buttons
+          : null}
       </Swipeable>
     );
   }

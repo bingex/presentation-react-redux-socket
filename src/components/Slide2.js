@@ -9,7 +9,7 @@ class Slide2 extends React.Component {
     title: 'Our goal is to ultimately make users happy. Focus on user.',
     description: [
       "Deliver interactive content in under 1 second. If you don't, user attention wanders, and their perception of dealing with the task is broken.",
-      'You have 100ms to respond to user input before they notice a lag. This applies to most inputs, such as clicking buttons, toggling form controls, or starting animations. This does not apply to touch drags or scrolls.',
+      'You have 100ms to respond to user input before they notice a lag. This applies to most inputs, such as clicking buttons, toggling form controls, or starting animations.',
       'For actions that take longer than 500ms to complete, always provide feedback.'
     ]
   };

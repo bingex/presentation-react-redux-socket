@@ -1,33 +1,67 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Plugin = styled.span`
+  color: #78838e; 
+  padding: 0 25px;
+`;
+
+const Start = styled.span`
+  padding: 0 20px;
+  color: #d81b60;
+`;
+
+const Min = styled.span`
+  padding: 0 20px;
+  color: #34a853
+`;
+
+const Perc = styled.span`
+  padding: 0 20px;
+  fontSize: 5vh;
+`;
 
 class Slide5 extends React.Component {
   state = {
-    headline: 'Optimizing images',
-    title: 'Images often account for most of the downloaded bytes on a web page and also often occupy a significant amount of visual space.',
-    description: [
-      'Leverage CSS3 effects where possible',
-      'Use web fonts instead of encoding text in images',
-      'Prefer vector formats: vector images are resolution and scale independent, which makes them a perfect fit for the multi-device and high-resolution world.',
-      'Minify and compress with GZIP SVG assets.',
-      'Use raster image optimization tools (gifsicle - create and optimize GIF images, jpegtran - optimize jpeg images, optipng - lossless PNG optimization, pngquant - lossy PNG optimization). Experiment with it.',
-      'Use responsive images.'
-    ]
+    headline: 'Optimizing resources 1.2'
   };
 
   render() {
-    const list = this.state.description.map((item, index) => {
-      return <li className="description" key={index}>{item}</li>;
-    });
-
     return (
       <div className="slide">
         <h4 className="headline">{this.state.headline}</h4>
 
         <div className="wrapper">
-          <div className="sub-wrapper">
-            <p className="title">{this.state.title}</p>
+          <div className="sub-wrapper" style={{ fontSize: '4vh' }}>
+            <p style={{ padding: '20px' }}>
+              <Plugin>jquery-1.11.0.js</Plugin>
+              <Start>276 KB</Start>
+              <span>-</span>
+              <span style={{ padding: '0 20px' }}>94 KB</span>
+              <span>-</span>
+              <Min>33 KB</Min>
+              <Perc>70%</Perc>
+            </p>
 
-            <ul>{list}</ul>
+            <p style={{ padding: '20px' }}>
+              <Plugin>angular-1.2.15.js</Plugin>
+              <Start>729 KB</Start>
+              <span>-</span>
+              <span style={{ padding: '0 20px' }}>101 KB</span>
+              <span>-</span>
+              <Min>37 KB</Min>
+              <Perc>75%</Perc>
+            </p>
+
+            <p style={{ padding: '20px' }}>
+              <Plugin>bootstrap-3.1.1.css</Plugin>
+              <Start>118 KB</Start>
+              <span>-</span>
+              <span style={{ padding: '0 20px' }}>98 KB</span>
+              <span>-</span>
+              <Min>17 KB</Min>
+              <Perc>83%</Perc>
+            </p>
           </div>
         </div>
       </div>
