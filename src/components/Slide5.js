@@ -18,7 +18,7 @@ const Min = styled.span`
 
 const Perc = styled.span`
   padding: 0 20px;
-  fontSize: 5vh;
+  fontSize: 4vh;
 `;
 
 class Slide5 extends React.Component {
@@ -32,7 +32,7 @@ class Slide5 extends React.Component {
         <h4 className="headline">{this.state.headline}</h4>
 
         <div className="wrapper">
-          <div className="sub-wrapper" style={{ fontSize: '4vh' }}>
+          <div className="sub-wrapper" style={{ fontSize: '3vh' }}>
             <p style={{ padding: '20px' }}>
               <Plugin>jquery-1.11.0.js</Plugin>
               <Start>276 KB</Start>

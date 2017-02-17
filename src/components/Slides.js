@@ -1,29 +1,36 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const wrapper = {
   maxWidth: '1000px',
   width: '90%',
-  padding: '50px',
+  padding: '0',
   margin: '0 auto',
   display: 'flex',
   flexWrap: 'wrap',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  height: '100vh'
 };
 
-const singleSlide = {
-  margin: '20px',
-  height: '100px',
-  width: '250px',
-  background: '#42b983',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: '#ffffff',
-  padding: '20px',
-  cursor: 'pointer',
-  borderRadius: '2px',
-  fontSize: '18px'
-};
+const SingleSlide = styled.div`
+  margin: 10px;
+  height: auto;
+  width: auto;
+  background: #42b983;
+  display: flex;
+  justifyContent: center;
+  alignItems: center;
+  color: #ffffff;
+  padding: 20px;
+  cursor: pointer;
+  borderRadius: 2px;
+  fontSize: 18px;
+
+  @media (max-width: 620px) {
+    padding: 5px;
+    margin: 5px;
+  }
+`;
 
 class Slides extends React.Component {
   state = {
@@ -45,38 +52,43 @@ class Slides extends React.Component {
       },
       {
         path: '/slides/4',
-        name: 'Optimizing resources',
+        name: 'Optimizing resources 1.1',
         id: 4
       },
       {
         path: '/slides/5',
-        name: 'Optimizing images',
+        name: 'Optimizing resources 1.2',
         id: 5
       },
       {
         path: '/slides/6',
-        name: 'Optimizing css',
+        name: 'Optimizing images',
         id: 6
       },
       {
         path: '/slides/7',
-        name: 'JavaScript optimization',
+        name: 'Optimizing css',
         id: 7
       },
       {
         path: '/slides/8',
-        name: 'Rendering perfomance',
+        name: 'JavaScript optimization',
         id: 8
       },
       {
         path: '/slides/9',
-        name: 'Tools',
+        name: 'Rendering perfomance',
         id: 9
       },
       {
         path: '/slides/10',
-        name: 'Developers',
+        name: 'Tools',
         id: 10
+      },
+      {
+        path: '/slides/11',
+        name: 'Developers',
+        id: 11
       }
     ]
   };
@@ -88,9 +100,9 @@ class Slides extends React.Component {
   render() {
     const list = this.state.slides.map((item, index) => {
       return (
-        <div style={singleSlide} key={index} onClick={() => this.goSlide(item.id)}>
+        <SingleSlide key={index} onClick={() => this.goSlide(item.id)}>
           {index + 1}. {item.name}
-        </div>
+        </SingleSlide>
       );
     });
 
