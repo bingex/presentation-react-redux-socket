@@ -26,9 +26,9 @@ const SingleSlide = styled.div`
   borderRadius: 2px;
   fontSize: 18px;
 
-  @media (max-width: 620px) {
-    padding: 5px;
-    margin: 5px;
+  @media (max-width: 720px) {
+    padding: 2px;
+    margin: 2px;
   }
 `;
 
@@ -37,58 +37,78 @@ class Slides extends React.Component {
     slides: [
       {
         path: '/slides/1',
-        name: 'Perfomance goal 1.1',
+        name: 'Start',
         id: 1
       },
       {
         path: '/slides/2',
-        name: 'Perfomance goal 1.2',
+        name: 'Perfomance goal 1.1',
         id: 2
       },
       {
         path: '/slides/3',
-        name: 'Eliminating unnecessary downloads',
-        id: 3
+        name: 'Perfomance goal 1.2',
+        id: 4
       },
       {
         path: '/slides/4',
-        name: 'Optimizing resources 1.1',
+        name: 'Eliminating unnecessary downloads',
         id: 4
       },
       {
         path: '/slides/5',
-        name: 'Optimizing resources 1.2',
+        name: 'Optimizing resources 1.1',
         id: 5
       },
       {
         path: '/slides/6',
-        name: 'Optimizing images',
+        name: 'Optimizing resources 1.2',
         id: 6
       },
       {
         path: '/slides/7',
-        name: 'Optimizing css',
+        name: 'Optimizing images 1.1',
         id: 7
       },
       {
         path: '/slides/8',
-        name: 'JavaScript optimization',
+        name: 'Optimizing images 1.2',
         id: 8
       },
       {
         path: '/slides/9',
-        name: 'Rendering perfomance',
+        name: 'Optimizing css',
         id: 9
       },
       {
         path: '/slides/10',
-        name: 'Tools',
+        name: 'JavaScript optimization 1.1',
         id: 10
       },
       {
         path: '/slides/11',
-        name: 'Developers',
+        name: 'JavaScript optimization 1.2',
         id: 11
+      },
+      {
+        path: '/slides/12',
+        name: 'Rendering perfomance',
+        id: 12
+      },
+      {
+        path: '/slides/13',
+        name: 'Tools',
+        id: 13
+      },
+      {
+        path: '/slides/14',
+        name: 'Developers',
+        id: 14
+      },
+      {
+        path: '/slides/15',
+        name: 'Thank you',
+        id: 15
       }
     ]
   };

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('./data/fonts/OpenSans-Regular.woff');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -18,14 +23,16 @@ body {
 }
 
 .wrapper {
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   font-family: 'Open Sans', sans-serif;
 }
 
 .sub-wrapper {
+  width: 90%;
   max-width: 900px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -33,7 +40,7 @@ body {
 .title {
   line-height: 1.4em;
   color: #2c3c42;
-  font-size: 3vh;
+  font-size: 3.4vh;
   padding: 20px;
   margin-bottom: 0;
 }
@@ -47,32 +54,15 @@ body {
   left: 20px;
 }
 
-@media (max-width: 520px) {
-  .title {
-    line-height: 1.2em;
-    font-size: 16px;
-    padding: 5px;
-    margin: 5px;
-  }
-}
-
 .description {
   color: #576267;
-  font-size: 2vh;
+  font-size: 2.4vh;
   padding: 15px 0;
   line-height: 1.4em;
 }
 
-@media (max-width: 520px) {
-  .description {
-    font-size: 14px;
-    padding: 2px 0;
-    line-height: 1.2em;
-  }
-}
-
 .btn-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
 }
@@ -93,4 +83,42 @@ body {
 .btn:hover {
   background-color: #000000;
   color: #ffffff;
+}
+
+pre {
+  background: #f7f7f7;
+  margin: 0 0 16px 0;
+  padding: 20px;
+}
+
+.atn {
+  color: #9c27b0;
+}
+
+.tag {
+  color: #3b78e7;
+}
+
+.atv {
+  color: #0d904f;
+}
+
+@media (max-width: 720px) {
+  .title {
+    line-height: 1.2em;
+    font-size: 16px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 5px 0;
+    line-height: 1.2em;
+  }
+
+  pre { 
+    max-width: 90%;
+    overflow-x: scroll;
+  }
 }

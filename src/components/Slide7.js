@@ -1,13 +1,16 @@
 import React from 'react';
 
-class Slide6 extends React.Component {
+class Slide7 extends React.Component {
   state = {
-    headline: 'Optimizing css',
-    title: 'Make sure to keep your CSS clean, deliver it as quickly as possible, and use media types and queries to unblock rendering.',
+    headline: 'Optimizing images 1.1',
+    title: 'Image optimization is both an art and a science.',
     description: [
-      'CSS is a render blocking resource. Get it to the client as soon and as quickly as possible to optimize the time to first render.',
-      'Media types and media queries allow us to mark some CSS resources as non-render blocking.',
-      'The browser downloads all CSS resources, regardless of blocking or non-blocking behavior.'
+      'Leverage CSS3 effects ( gradients, shadows, etc. ) where possible.',
+      'Use web fonts instead of encoding text in images.',
+      'Prefer vector formats: vector images are resolution and scale independent, which makes them a perfect fit for the multi-device and high-resolution world.',
+      'Minify and compress with GZIP SVG assets.',
+      'Use raster image optimization tools (gifsicle - create and optimize GIF images, jpegtran - optimize jpeg images, optipng - lossless PNG optimization, pngquant - lossy PNG optimization). Experiment with it.',
+      'Use responsive images.'
     ]
   };
 
@@ -32,4 +35,4 @@ class Slide6 extends React.Component {
   }
 }
 
-export default Slide6;
+export default Slide7;

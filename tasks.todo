@@ -1,15 +1,17 @@
 ☐ Add state change animation
 ☐ Check slide description and add some visual additionals to slides
-  ✔ Slide 3 @done (2/16/2017, 10:14:09 PM)
-  ✔ Slide 4 @done (2/16/2017, 10:14:25 PM)
-  ✔ Slide 5 @done (2/16/2017, 10:14:39 PM)
-  ☐ Slide 6
-  ☐ Slide 7
-  ☐ Slide 8
-  ☐ Slide 9
-  ☐ Slide 10
+  ✔ Assets optimisation @done (17-02-18 13:20)
+  ✔ Image optimization @done (17-02-18 13:47)
+  ✔ Css optimization @done (17-02-18 16:12)
+  ✔ JS optimization @done (17-02-18 19:29)
+  ✔ Rendering @done (17-02-18 23:19)
+  ✔ Tools @done (17-02-18 23:47)
+  ✔ Devs @done (17-02-18 23:59)
 ☐ Add connected user list
-☐ Add log out button
-☐ Deploy on Heroku or use Sergey's server
-☐ Test presentation on large monitor
-☐ Add animation to images
+✔ Add introduction slide @done (17-02-18 15:20)
+✔ Add finish slide @done (17-02-19 00:03)
+✔ Load fonts from file, not cdn @done (17-02-18 15:12)
+✔ Optimize images @done (17-02-18 23:50)
+✔ Fix slides array @done (17-02-19 00:03)
+✔ Bug: when change slide on other devices, target device bugs @done (17-02-19 00:35)
+☐ Optimize for mobile

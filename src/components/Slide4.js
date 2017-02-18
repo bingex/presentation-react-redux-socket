@@ -1,34 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import cssNano from '../data/images/css-nano.svg';
-import uglifyJs from '../data/images/uglifyjs.png';
-import gzip from '../data/images/gzip.png';
-
-const wrapper = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center'
+const nojquery = {
+  fontSize: '2vh',
+  color: '#576267',
+  textAlign: 'right'
 };
-
-const Percentage = styled.div`
-  fontSize: 24px;
-  backgroundColor: #3367D6;
-  borderRadius: 100%;
-  color: #ffffff;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  justifyContent: center;
-  alignItems: center;
-  position: absolute;
-`;
 
 class Slide4 extends React.Component {
   state = {
-    headline: 'Optimizing resources 1.1',
-    title: 'The best thing you can do to improve page-load speed is to minimize the overall download size by optimizing and compressing the remaining resources.',
-    description: ['Minify your code.', 'Uglify your code.', 'Use GZIP.']
+    headline: 'Eliminating unnecessary downloads',
+    title: 'To deliver great performance we need to optimize delivery of each and every byte!',
+    description: [
+      'Inventory your own assets and third-party assets on your pages.',
+      'Measure the performance of each asset: its value and its technical performance.',
+      'Determine if the resources are providing sufficient value.'
+    ]
   };
 
   render() {
@@ -44,23 +30,12 @@ class Slide4 extends React.Component {
           <div className="sub-wrapper">
             <p className="title">{this.state.title}</p>
 
-            <div style={wrapper}>
-              <ul>{list}</ul>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ position: 'relative' }}>
-                  <img width="200px" src={cssNano} alt="css nano" />
-                  <Percentage style={{ right: '30px', top: '-20px' }}>40%</Percentage>
-                </div>
-                <div style={{ position: 'relative' }}>
-                  <img width="200px" src={uglifyJs} alt="uglify js" />
-                  <Percentage style={{ right: '-20px', top: '-30px' }}>35%</Percentage>
-                </div>
-                <div style={{ position: 'relative', padding: '0 15px' }}>
-                  <img width="150px" src={gzip} alt="gzip" />
-                  <Percentage style={{ right: '10px', top: '-20px' }}>80%</Percentage>
-                </div>
-              </div>
-            </div>
+            <ul>{list}</ul>
+
+            <p style={nojquery}>
+              <span>*you might not need jquery</span><br />
+              <span style={{ color: '#34a853' }}>youmightnotneedjquery.com</span>
+            </p>
           </div>
         </div>
       </div>

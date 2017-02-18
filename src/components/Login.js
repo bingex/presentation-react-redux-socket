@@ -15,18 +15,18 @@ const wrapper = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'
-}
+};
 
 const title = {
   fontSize: '26px',
   color: '#ffffff',
   marginBottom: '0'
-}
+};
 
 const control = {
   display: 'flex',
   justifyContent: 'center'
-}
+};
 
 const loginInput = {
   marginTop: '15px',
@@ -38,7 +38,7 @@ const loginInput = {
   borderRadius: '3px 0 0 3px',
   width: '220px',
   maxWidth: '90%'
-}
+};
 
 const btn = {
   fontWeight: 'bold',
@@ -52,8 +52,8 @@ const btn = {
   color: 'white',
   backgroundColor: '#8bc34a',
   transition: 'all 0.2s linear',
-  cursor: 'pointer',
-}
+  cursor: 'pointer'
+};
 
 class Login extends React.Component {
   componentWillReceiveProps(props) {
@@ -74,19 +74,24 @@ class Login extends React.Component {
     }
   };
 
-  render () {
+  render() {
     return (
       <div style={wrapper}>
         <form onSubmit={this.handleSubmit}>
-          <h1 style={title}>Presentation secret key:</h1>
+          <h1 style={title}>Presentation secret:</h1>
 
           <div style={control}>
-            <input style={loginInput} type="text" value={this.props.secret} onChange={this.handleChange} />
+            <input
+              style={loginInput}
+              type="text"
+              value={this.props.secret}
+              onChange={this.handleChange}
+            />
             <button style={btn} type="submit">Start</button>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
@@ -101,5 +106,4 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, {setSecret, login})(Login);
-
+export default connect(mapStateToProps, { setSecret, login })(Login);

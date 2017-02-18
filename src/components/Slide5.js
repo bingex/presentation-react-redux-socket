@@ -1,67 +1,75 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Plugin = styled.span`
-  color: #78838e; 
-  padding: 0 25px;
+import cssNano from '../data/images/css-nano.svg';
+import uglifyJs from '../data/images/uglifyjs.png';
+import gzip from '../data/images/gzip.png';
+
+const wrapper = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
+};
+
+const ImgWrapper = styled.div`
+  display: flex;
+  alignItems: center;
+
+  @media (max-width: 720px) {
+    display: none;
+  }
 `;
 
-const Start = styled.span`
-  padding: 0 20px;
-  color: #d81b60;
-`;
-
-const Min = styled.span`
-  padding: 0 20px;
-  color: #34a853
-`;
-
-const Perc = styled.span`
-  padding: 0 20px;
-  fontSize: 4vh;
+const Percentage = styled.div`
+  fontSize: 24px;
+  backgroundColor: #3367D6;
+  borderRadius: 100%;
+  color: #ffffff;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justifyContent: center;
+  alignItems: center;
+  position: absolute;
 `;
 
 class Slide5 extends React.Component {
   state = {
-    headline: 'Optimizing resources 1.2'
+    headline: 'Optimizing resources 1.1',
+    title: 'The best thing you can do to improve page-load speed is to minimize the overall download size by optimizing and compressing the remaining resources.',
+    description: ['Minify your code.', 'Uglify your code.', 'Use GZIP.']
   };
 
   render() {
+    const list = this.state.description.map((item, index) => {
+      return <li className="description" key={index}>{item}</li>;
+    });
+
     return (
       <div className="slide">
         <h4 className="headline">{this.state.headline}</h4>
 
         <div className="wrapper">
-          <div className="sub-wrapper" style={{ fontSize: '3vh' }}>
-            <p style={{ padding: '20px' }}>
-              <Plugin>jquery-1.11.0.js</Plugin>
-              <Start>276 KB</Start>
-              <span>-</span>
-              <span style={{ padding: '0 20px' }}>94 KB</span>
-              <span>-</span>
-              <Min>33 KB</Min>
-              <Perc>70%</Perc>
-            </p>
+          <div className="sub-wrapper">
+            <p className="title">{this.state.title}</p>
 
-            <p style={{ padding: '20px' }}>
-              <Plugin>angular-1.2.15.js</Plugin>
-              <Start>729 KB</Start>
-              <span>-</span>
-              <span style={{ padding: '0 20px' }}>101 KB</span>
-              <span>-</span>
-              <Min>37 KB</Min>
-              <Perc>75%</Perc>
-            </p>
-
-            <p style={{ padding: '20px' }}>
-              <Plugin>bootstrap-3.1.1.css</Plugin>
-              <Start>118 KB</Start>
-              <span>-</span>
-              <span style={{ padding: '0 20px' }}>98 KB</span>
-              <span>-</span>
-              <Min>17 KB</Min>
-              <Perc>83%</Perc>
-            </p>
+            <div style={wrapper}>
+              <ul>{list}</ul>
+              <ImgWrapper>
+                <div style={{ position: 'relative' }}>
+                  <img width="200px" src={cssNano} alt="css nano" />
+                  <Percentage style={{ right: '30px', top: '-20px' }}>40%</Percentage>
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <img width="200px" src={uglifyJs} alt="uglify js" />
+                  <Percentage style={{ right: '-20px', top: '-30px' }}>35%</Percentage>
+                </div>
+                <div style={{ position: 'relative', padding: '0 15px' }}>
+                  <img width="150px" src={gzip} alt="gzip" />
+                  <Percentage style={{ right: '10px', top: '-20px' }}>80%</Percentage>
+                </div>
+              </ImgWrapper>
+            </div>
           </div>
         </div>
       </div>

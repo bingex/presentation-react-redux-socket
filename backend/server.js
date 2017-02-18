@@ -14,29 +14,22 @@ let io = socket.listen(app.listen(port));
 app.use(express.static(__dirname + '/public'));
 
 // This is a secret key that prevents others from opening your presentation
-let secret = '1';
+const secret = '1';
 
 // Initialize a new socket.io application
 let presentation = io.on('connection', function(socket) {
-  // Clients send the 'slide-changed' message whenever they navigate to a new slide.
-  // socket.on('slide-changed', data => {
-  //   if (data.key === secret) {
-  //     presentation.emit('navigate', {
-  //       id: data.id
-  //     });
-  //   }
-  // });
-
   socket.on('action', function(action) {
     switch (action.type) {
       case 'LOGIN':
-        socket.emit('action', {
-          type: 'LOGIN_SUCCESS',
-          meta: { remote: true }
-        });
+        if (action.secret && action.secret === secret) {
+          socket.emit('action', {
+            type: 'LOGIN_SUCCESS',
+            meta: { remote: true }
+          });
+        }
 
       case 'SLIDE_CHANGED':
-        socket.broadcast.emit('action', {
+        presentation.emit('action', {
           type: 'SLIDE_CHANGED_FROM_SERVER',
           meta: { remote: true },
           data: action.data

@@ -15,6 +15,10 @@ import Slide8 from './components/Slide8';
 import Slide9 from './components/Slide9';
 import Slide10 from './components/Slide10';
 import Slide11 from './components/Slide11';
+import Slide12 from './components/Slide12';
+import Slide13 from './components/Slide13';
+import Slide14 from './components/Slide14';
+import Slide15 from './components/Slide15';
 
 export default (
   <Route path="/" component={App}>
@@ -32,5 +36,9 @@ export default (
     <Route path="/slides/9" component={Slide9} />
     <Route path="/slides/10" component={Slide10} />
     <Route path="/slides/11" component={Slide11} />
+    <Route path="/slides/12" component={Slide12} />
+    <Route path="/slides/13" component={Slide13} />
+    <Route path="/slides/14" component={Slide14} />
+    <Route path="/slides/15" component={Slide15} />
   </Route>
 );

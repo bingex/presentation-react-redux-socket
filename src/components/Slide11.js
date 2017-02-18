@@ -1,99 +1,43 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import addyImg from '../data/images/addy.jpg';
-import ilyaImg from '../data/images/ilya.jpeg';
-import paulImg from '../data/images/paul.webp';
+import http2 from '../data/images/http2.svg';
 
-const devs = {
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-};
+const Img = styled.img`
+  paddingTop: 40px;
 
-const dev = {
-  display: 'flex',
-  justifyContent: 'flexStart',
-  alignItems: 'center',
-  padding: '20px'
-};
+  @media (max-width: 720px) {
+    display: none;
+  }
+`;
 
-const title = {
-  paddingLeft: '20px'
-};
-
-const name = {
-  fontSize: '26px',
-  fontSeight: 'bold'
-};
-
-const imgStyle = {
-  width: '150px',
-  borderRadius: '100%'
-};
-
-const whoIs = {
-  color: '#576267',
-  fontSize: '16px',
-  marginTop: '10px'
-};
-
-const twitter = {
-  color: '#1da1f2',
-  fontSize: '16px',
-  paddingLeft: '10px'
-};
-
-class Slide10 extends React.Component {
+class Slide7 extends React.Component {
   state = {
-    headline: 'Tools',
+    headline: 'JavaScript optimization 1.2',
     description: [
-      {
-        img: ilyaImg,
-        name: 'Ilya Grigorik',
-        whois: 'Google Developer Advocate and Web Perf Guru.',
-        twitter: '@igrigorik'
-      },
-      {
-        img: paulImg,
-        name: 'Paul Lewis',
-        whois: 'Google Design and Perf Advocate.',
-        twitter: '@aerotwist'
-      },
-      {
-        img: addyImg,
-        name: 'Addy Osmani',
-        whois: 'Work on Google Chrome, proggresive web app guru.',
-        twitter: '@addyosmani'
-      }
+      'Concatenate your JS files into one file (with HTTP/2 this is no longer as important).'
     ]
   };
 
   render() {
     const list = this.state.description.map((item, index) => {
-      return (
-        <div style={dev} key={index}>
-          <img style={imgStyle} src={item.img} alt={item.name} />
-          <span style={title}>
-            <div>
-              <span style={name}>{item.name}</span>
-              <span style={twitter}>{item.twitter}</span>
-            </div>
-            <p style={whoIs}>{item.whois}</p>
-          </span>
-        </div>
-      );
+      return <li className="description" key={index}>{item}</li>;
     });
 
+    list.splice(1, 0, <Img width="700px" src={http2} alt="HTTP 2" key="9999" />);
+
     return (
-      <div style={devs}>
-        <div>
-          {list}
+      <div className="slide">
+        <h4 className="headline">{this.state.headline}</h4>
+
+        <div className="wrapper">
+          <div className="sub-wrapper">
+            <ul>{list}</ul>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Slide10;
+export default Slide7;

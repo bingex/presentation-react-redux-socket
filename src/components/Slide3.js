@@ -1,19 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const nojquery = {
-  fontSize: '2vh',
-  color: '#576267',
-  textAlign: 'right'
-};
+import UserImg from '../data/images/happy-user.png';
 
 class Slide3 extends React.Component {
   state = {
-    headline: 'Eliminating unnecessary downloads',
-    title: 'To deliver great performance we need to optimize delivery of each and every byte!',
+    headline: 'Perfomance goal 1.2',
+    title: 'Our goal is to ultimately make users happy. Focus on user.',
     description: [
-      'Inventory your own assets and third-party assets on your pages.',
-      'Measure the performance of each asset: its value and its technical performance.',
-      'Determine if the resources are providing sufficient value.'
+      "Deliver interactive content in under 1 second. If you don't, user attention wanders, and their perception of dealing with the task is broken.",
+      'You have 100ms to respond to user input before they notice a lag. This applies to most inputs, such as clicking buttons, toggling form controls, or starting animations.',
+      'For actions that take longer than 500ms to complete, always provide feedback.'
     ]
   };
 
@@ -32,10 +29,7 @@ class Slide3 extends React.Component {
 
             <ul>{list}</ul>
 
-            <p style={nojquery}>
-              <span>*you might not need jquery</span><br />
-              <span style={{ color: '#34a853' }}>youmightnotneedjquery.com</span>
-            </p>
+            <Img src={UserImg} alt="Happy user" />
           </div>
         </div>
       </div>
@@ -44,3 +38,14 @@ class Slide3 extends React.Component {
 }
 
 export default Slide3;
+
+const Img = styled.img`
+  paddingTop: 20px;
+  display: flex;
+  margin: auto;
+  width: 20vh;
+
+  @media (max-width: 520px) {
+    display: none;
+  }
+`;

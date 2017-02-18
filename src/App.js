@@ -2,59 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swipeable from 'react-swipeable';
 import { Link } from 'react-router';
-import { TransitionMotion, spring } from 'react-motion';
 import { slideChange } from './actions';
-
-const willEnter = () => ({
-  opacity: 0,
-  scale: 0.98
-});
-
-const willLeave = () => ({
-  opacity: spring(0),
-  scale: spring(1.02)
-});
-
-const getStyles = () => ({
-  opacity: spring(1),
-  scale: spring(1)
-});
-
-const RouteTransition = ({ children: child, pathname }) => (
-  <TransitionMotion
-    styles={ [{
-      key: pathname,
-      style: getStyles(),
-      data: { child }
-    }] }
-    willEnter={ willEnter }
-    willLeave={ willLeave }
-  >
-    { (interpolated) =>
-      <div>
-        { interpolated.map(({ key, style, data }) =>
-          <div
-            key={ `${key}-transition` }
-            style={ {
-              ...styles.wrapper,
-              opacity: style.opacity,
-              transform: `scale(${style.scale})`
-            } }
-          >
-            { data.child }
-          </div>
-        ) }
-      </div>
-    }
-  </TransitionMotion>
-);
-
-var styles = {
-  wrapper: {
-    position: 'absolute',
-    width: '100%'
-  }
-};
 
 class App extends Component {
   prevSlide = () => {
@@ -85,7 +33,7 @@ class App extends Component {
 
     pathArr = this.props.location.pathname.split('/');
     if (pathArr.length === 3) {
-      if (pathArr[2] < 11) {
+      if (pathArr[2] < 15) {
         path = `/slides/${+pathArr[2] + 1}`;
         this.context.router.push(path);
         this.props.slideChange(path);
@@ -94,7 +42,12 @@ class App extends Component {
   };
 
   componentWillReceiveProps(props) {
-    if (props.location && props.activeSlide && props.location.pathname !== props.activeSlide) {
+    if (
+      props.location &&
+      props.activeSlide &&
+      props.location.pathname !== props.activeSlide &&
+      props.location.pathname !== '/slides'
+    ) {
       this.context.router.push(props.activeSlide);
     }
   }
@@ -124,12 +77,10 @@ class App extends Component {
 
     return (
       <Swipeable onSwipedLeft={this.nextSlide} onSwipedRight={this.prevSlide}>
-        <RouteTransition pathname={ location.pathname }>
-          {this.props.children}
-          {this.props.location.pathname !== '/login' && this.props.location.pathname !== '/slides'
-            ? buttons
-            : null}
-        </RouteTransition>
+        {this.props.children}
+        {this.props.location.pathname !== '/login' && this.props.location.pathname !== '/slides'
+          ? buttons
+          : null}
       </Swipeable>
     );
   }

@@ -1,7 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import slideImg from '../data/images/clock.jpg';
+import mainImg from '../data/images/main.png';
+import introImg from '../data/images/introduction.jpg';
+
+const Block = styled.div`
+  width: 90%;
+  maxWidth: 700px;
+  textAlign: center;
+`;
 
 const wrapper = {
   height: '100vh',
@@ -9,38 +16,29 @@ const wrapper = {
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  backgroundBlendMode: 'multiply',
-  backgroundImage: `url(${slideImg})`
+  backgroundImage: `url(${mainImg})`,
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center'
 };
 
-const Title = styled.p`
-  lineHeight: 1.4em;
-  color: #ffffff;
-  font-size: 30px;
-  maxWidth: 850px;
-  @media (max-width: 520px) {
-    lineHeight: 1.4em;
-    color: #ffffff;
-    fontSize: 16px;
-    maxWidth: 850px;
+const Img = styled.img`
+  padding: 0;
+  width: 300px;
+
+  @media (max-width: 720px) {
+    width: 150px;
   }
 `;
 
 class Slide1 extends React.Component {
-  state = {
-    headline: 'Perfomance goal 1.1',
-    title: 'What is website performance goals? Is it to make your site perform fast? Or make your site perform fast on any specific device? Or something else?'
-  };
-
   render() {
     return (
       <div style={wrapper}>
-        <h4 className="headline">{this.state.headline}</h4>
-
-        <div className="wrapper">
-          <Title>{this.state.title}</Title>
-        </div>
+        <Block>
+          <h1 style={{ color: '#ffffff' }}>Webpage perfomance optimization</h1>
+          <Img src={introImg} alt="Turtle and rocket" />
+        </Block>
       </div>
     );
   }
