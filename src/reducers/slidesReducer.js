@@ -8,7 +8,7 @@ export default function slidesReducer(state = initial, action = {}) {
   switch (action.type) {
     case SLIDE_CHANGED_FROM_SERVER:
       return Object.assign({}, state, {
-        activeSlide: action.data.slide
+        activeSlide: action.data ? action.data.slide : false
       });
 
     default:

@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "react": "^15.4.2",
-    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
@@ -15,7 +14,6 @@
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-socket.io-middleware": "^1.0.4",
-    "redux-thunk": "^2.2.0",
     "socket.io-client": "^1.7.2",
     "styled-components": "^1.4.3"
   },

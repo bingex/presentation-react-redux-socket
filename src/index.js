@@ -4,7 +4,6 @@ import './index.css';
 
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/rootReducer';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
@@ -17,7 +16,7 @@ const io = socketIO.connect();
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, socketIoMiddleware(io)))
+  composeWithDevTools(applyMiddleware(socketIoMiddleware(io)))
 );
 
 ReactDOM.render(
