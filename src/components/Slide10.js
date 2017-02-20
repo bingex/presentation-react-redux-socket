@@ -6,8 +6,7 @@ class Slide7 extends React.Component {
     title: 'When it comes to Javascript there are some best practices to always keep in mind.',
     description: [
       'Move your scripts to the bottom of the page right before your </body> tag.',
-      'Use the async or defer directive to avoid render blocking.',
-      'Inline your javascript if it is small.'
+      'Use the async or defer directive to avoid render blocking.'
     ]
   };
 

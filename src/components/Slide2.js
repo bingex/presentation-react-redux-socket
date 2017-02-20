@@ -9,7 +9,7 @@ const wrapper = {
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
   backgroundBlendMode: 'multiply',
   backgroundImage: `url(${slideImg})`
 };
